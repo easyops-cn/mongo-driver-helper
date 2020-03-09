@@ -15,10 +15,12 @@ type ClientHelper interface {
 }
 
 type DatabaseHelper interface {
+	Name() string
 	Collection(name string, opts ...*options.CollectionOptions) CollectionHelper
 }
 
 type CollectionHelper interface {
+	Name() string
 	BulkWrite(ctx context.Context, models []mongo.WriteModel,
 		opts ...*options.BulkWriteOptions) (*mongo.BulkWriteResult, error)
 	InsertOne(ctx context.Context, document interface{},

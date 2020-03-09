@@ -10,6 +10,10 @@ type collection struct {
 	coll *mongo.Collection
 }
 
+func (c *collection) Name() string {
+	return c.coll.Name()
+}
+
 func (c *collection) BulkWrite(ctx context.Context, models []mongo.WriteModel,
 	opts ...*options.BulkWriteOptions) (*mongo.BulkWriteResult, error) {
 	return c.coll.BulkWrite(ctx, models, opts...)
