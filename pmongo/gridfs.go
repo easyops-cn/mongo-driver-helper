@@ -1,4 +1,4 @@
-package pgridfs
+package pmongo
 
 import (
 	"io"
@@ -7,16 +7,32 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo/gridfs"
 	"go.mongodb.org/mongo-driver/mongo/options"
-
-	"github.com/easyops-cn/mongo-driver-helper/pmongo"
 )
+
+type DownloadStreamInterface interface {
+	Close() error
+	Read(p []byte) (int, error)
+	SetReadDeadline(t time.Time) error
+	Skip(skip int64) (int64, error)
+}
+
+var _ DownloadStreamInterface = (*gridfs.DownloadStream)(nil)
+
+type UploadStreamInterface interface {
+	Abort() error
+	Close() error
+	SetWriteDeadline(t time.Time) error
+	Write(p []byte) (int, error)
+}
+
+var _ UploadStreamInterface = (*gridfs.UploadStream)(nil)
 
 type BucketInterface interface {
 	Delete(fileID interface{}) error
 	DownloadToStream(fileID interface{}, stream io.Writer) (int64, error)
 	DownloadToStreamByName(filename string, stream io.Writer, opts ...*options.NameOptions) (int64, error)
 	Drop() error
-	Find(filter interface{}, opts ...*options.GridFSFindOptions) (pmongo.CursorInterface, error)
+	Find(filter interface{}, opts ...*options.GridFSFindOptions) (CursorInterface, error)
 	OpenDownloadStream(fileID interface{}) (DownloadStreamInterface, error)
 	OpenDownloadStreamByName(filename string, opts ...*options.NameOptions) (DownloadStreamInterface, error)
 	OpenUploadStream(filename string, opts ...*options.UploadOptions) (UploadStreamInterface, error)
@@ -26,6 +42,14 @@ type BucketInterface interface {
 	SetWriteDeadline(t time.Time) error
 	UploadFromStream(filename string, source io.Reader, opts ...*options.UploadOptions) (primitive.ObjectID, error)
 	UploadFromStreamWithID(fileID interface{}, filename string, source io.Reader, opts ...*options.UploadOptions) error
+}
+
+func NewBucket(d *Database, opts ...*options.BucketOptions) (BucketInterface, error) {
+	buck, err := gridfs.NewBucket(d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &Bucket{buck}, nil
 }
 
 type Bucket struct {
@@ -48,7 +72,7 @@ func (b *Bucket) Drop() error {
 	return b.b.Drop()
 }
 
-func (b *Bucket) Find(filter interface{}, opts ...*options.GridFSFindOptions) (pmongo.CursorInterface, error) {
+func (b *Bucket) Find(filter interface{}, opts ...*options.GridFSFindOptions) (CursorInterface, error) {
 	return b.b.Find(filter, opts...)
 }
 
