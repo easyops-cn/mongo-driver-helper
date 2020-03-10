@@ -44,14 +44,6 @@ type BucketInterface interface {
 	UploadFromStreamWithID(fileID interface{}, filename string, source io.Reader, opts ...*options.UploadOptions) error
 }
 
-func NewBucket(d *Database, opts ...*options.BucketOptions) (BucketInterface, error) {
-	buck, err := gridfs.NewBucket(d.db, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return &Bucket{buck}, nil
-}
-
 type Bucket struct {
 	b *gridfs.Bucket
 }

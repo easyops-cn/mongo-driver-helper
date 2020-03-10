@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/gridfs"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readconcern"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -24,12 +25,22 @@ type DatabaseInterface interface {
 	RunCommandCursor(ctx context.Context, runCommand interface{}, opts ...*options.RunCmdOptions) (CursorInterface, error)
 	Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error)
 	WriteConcern() *writeconcern.WriteConcern
+
+	NewBucket(opts ...*options.BucketOptions) (BucketInterface, error)
 }
 
 var _ DatabaseInterface = (*Database)(nil)
 
 type Database struct {
 	db *mongo.Database
+}
+
+func (d *Database) NewBucket(opts ...*options.BucketOptions) (BucketInterface, error) {
+	buck, err := gridfs.NewBucket(d.db, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &Bucket{buck}, nil
 }
 
 func (d *Database) Aggregate(ctx context.Context, pipeline interface{}, opts ...*options.AggregateOptions) (CursorInterface, error) {
