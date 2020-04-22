@@ -20,6 +20,10 @@ type IndexView struct {
 	indexView mongo.IndexView
 }
 
+func NewIndexView(indexView mongo.IndexView) IndexView {
+	return IndexView{indexView: indexView}
+}
+
 func (i IndexView) List(ctx context.Context, opts ...*options.ListIndexesOptions) (CursorInterface, error) {
 	return i.indexView.List(ctx, opts...)
 }
