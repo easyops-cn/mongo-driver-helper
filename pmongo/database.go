@@ -35,6 +35,10 @@ type Database struct {
 	db *mongo.Database
 }
 
+func NewDatabase(db *mongo.Database) *Database {
+	return &Database{db: db}
+}
+
 func (d *Database) NewBucket(opts ...*options.BucketOptions) (BucketInterface, error) {
 	buck, err := gridfs.NewBucket(d.db, opts...)
 	if err != nil {

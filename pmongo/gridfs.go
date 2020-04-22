@@ -48,6 +48,10 @@ type Bucket struct {
 	b *gridfs.Bucket
 }
 
+func NewBucket(b *gridfs.Bucket) *Bucket {
+	return &Bucket{b: b}
+}
+
 func (b *Bucket) Delete(fileID interface{}) error {
 	return b.b.Delete(fileID)
 }

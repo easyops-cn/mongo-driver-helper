@@ -39,6 +39,10 @@ type Collection struct {
 	coll *mongo.Collection
 }
 
+func NewCollection(coll *mongo.Collection) *Collection {
+	return &Collection{coll: coll}
+}
+
 func (c *Collection) Aggregate(ctx context.Context, pipeline interface{}, opts ...*options.AggregateOptions) (CursorInterface, error) {
 	return c.coll.Aggregate(ctx, pipeline, opts...)
 }
