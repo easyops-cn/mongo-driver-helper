@@ -105,7 +105,7 @@ func (c *Collection) FindOneAndUpdate(ctx context.Context, filter interface{}, u
 }
 
 func (c *Collection) Indexes() IndexViewInterface {
-	return IndexView{c.coll.Indexes()}
+	return IndexView{indexView: c.coll.Indexes()}
 }
 
 func (c *Collection) InsertMany(ctx context.Context, documents []interface{}, opts ...*options.InsertManyOptions) (*mongo.InsertManyResult, error) {
