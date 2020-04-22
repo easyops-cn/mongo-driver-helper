@@ -23,7 +23,7 @@ type CollectionInterface interface {
 	FindOneAndDelete(ctx context.Context, filter interface{}, opts ...*options.FindOneAndDeleteOptions) SingleResultInterface
 	FindOneAndReplace(ctx context.Context, filter interface{}, replacement interface{}, opts ...*options.FindOneAndReplaceOptions) SingleResultInterface
 	FindOneAndUpdate(ctx context.Context, filter interface{}, update interface{}, opts ...*options.FindOneAndUpdateOptions) SingleResultInterface
-	Indexes() mongo.IndexView
+	Indexes() IndexViewInterface
 	InsertMany(ctx context.Context, documents []interface{}, opts ...*options.InsertManyOptions) (*mongo.InsertManyResult, error)
 	InsertOne(ctx context.Context, document interface{}, opts ...*options.InsertOneOptions) (*mongo.InsertOneResult, error)
 	Name() string
@@ -104,8 +104,8 @@ func (c *Collection) FindOneAndUpdate(ctx context.Context, filter interface{}, u
 	return c.coll.FindOneAndUpdate(ctx, filter, update, opts...)
 }
 
-func (c *Collection) Indexes() mongo.IndexView {
-	return c.coll.Indexes()
+func (c *Collection) Indexes() IndexViewInterface {
+	return IndexView{c.coll.Indexes()}
 }
 
 func (c *Collection) InsertMany(ctx context.Context, documents []interface{}, opts ...*options.InsertManyOptions) (*mongo.InsertManyResult, error) {
