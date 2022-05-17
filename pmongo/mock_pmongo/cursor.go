@@ -6,34 +6,35 @@ package mock_pmongo
 
 import (
 	context "context"
-	gomock "github.com/golang/mock/gomock"
 	reflect "reflect"
+
+	gomock "github.com/golang/mock/gomock"
 )
 
-// MockCursorInterface is a mock of CursorInterface interface
+// MockCursorInterface is a mock of CursorInterface interface.
 type MockCursorInterface struct {
 	ctrl     *gomock.Controller
 	recorder *MockCursorInterfaceMockRecorder
 }
 
-// MockCursorInterfaceMockRecorder is the mock recorder for MockCursorInterface
+// MockCursorInterfaceMockRecorder is the mock recorder for MockCursorInterface.
 type MockCursorInterfaceMockRecorder struct {
 	mock *MockCursorInterface
 }
 
-// NewMockCursorInterface creates a new mock instance
+// NewMockCursorInterface creates a new mock instance.
 func NewMockCursorInterface(ctrl *gomock.Controller) *MockCursorInterface {
 	mock := &MockCursorInterface{ctrl: ctrl}
 	mock.recorder = &MockCursorInterfaceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockCursorInterface) EXPECT() *MockCursorInterfaceMockRecorder {
 	return m.recorder
 }
 
-// All mocks base method
+// All mocks base method.
 func (m *MockCursorInterface) All(ctx context.Context, results interface{}) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "All", ctx, results)
@@ -41,13 +42,13 @@ func (m *MockCursorInterface) All(ctx context.Context, results interface{}) erro
 	return ret0
 }
 
-// All indicates an expected call of All
+// All indicates an expected call of All.
 func (mr *MockCursorInterfaceMockRecorder) All(ctx, results interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "All", reflect.TypeOf((*MockCursorInterface)(nil).All), ctx, results)
 }
 
-// Close mocks base method
+// Close mocks base method.
 func (m *MockCursorInterface) Close(ctx context.Context) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close", ctx)
@@ -55,13 +56,13 @@ func (m *MockCursorInterface) Close(ctx context.Context) error {
 	return ret0
 }
 
-// Close indicates an expected call of Close
+// Close indicates an expected call of Close.
 func (mr *MockCursorInterfaceMockRecorder) Close(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockCursorInterface)(nil).Close), ctx)
 }
 
-// Decode mocks base method
+// Decode mocks base method.
 func (m *MockCursorInterface) Decode(val interface{}) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Decode", val)
@@ -69,13 +70,13 @@ func (m *MockCursorInterface) Decode(val interface{}) error {
 	return ret0
 }
 
-// Decode indicates an expected call of Decode
+// Decode indicates an expected call of Decode.
 func (mr *MockCursorInterfaceMockRecorder) Decode(val interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Decode", reflect.TypeOf((*MockCursorInterface)(nil).Decode), val)
 }
 
-// Err mocks base method
+// Err mocks base method.
 func (m *MockCursorInterface) Err() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Err")
@@ -83,13 +84,13 @@ func (m *MockCursorInterface) Err() error {
 	return ret0
 }
 
-// Err indicates an expected call of Err
+// Err indicates an expected call of Err.
 func (mr *MockCursorInterfaceMockRecorder) Err() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Err", reflect.TypeOf((*MockCursorInterface)(nil).Err))
 }
 
-// ID mocks base method
+// ID mocks base method.
 func (m *MockCursorInterface) ID() int64 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ID")
@@ -97,13 +98,13 @@ func (m *MockCursorInterface) ID() int64 {
 	return ret0
 }
 
-// ID indicates an expected call of ID
+// ID indicates an expected call of ID.
 func (mr *MockCursorInterfaceMockRecorder) ID() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ID", reflect.TypeOf((*MockCursorInterface)(nil).ID))
 }
 
-// Next mocks base method
+// Next mocks base method.
 func (m *MockCursorInterface) Next(ctx context.Context) bool {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Next", ctx)
@@ -111,13 +112,13 @@ func (m *MockCursorInterface) Next(ctx context.Context) bool {
 	return ret0
 }
 
-// Next indicates an expected call of Next
+// Next indicates an expected call of Next.
 func (mr *MockCursorInterfaceMockRecorder) Next(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Next", reflect.TypeOf((*MockCursorInterface)(nil).Next), ctx)
 }
 
-// TryNext mocks base method
+// TryNext mocks base method.
 func (m *MockCursorInterface) TryNext(ctx context.Context) bool {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "TryNext", ctx)
@@ -125,7 +126,7 @@ func (m *MockCursorInterface) TryNext(ctx context.Context) bool {
 	return ret0
 }
 
-// TryNext indicates an expected call of TryNext
+// TryNext indicates an expected call of TryNext.
 func (mr *MockCursorInterfaceMockRecorder) TryNext(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TryNext", reflect.TypeOf((*MockCursorInterface)(nil).TryNext), ctx)

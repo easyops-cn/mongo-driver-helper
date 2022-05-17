@@ -6,38 +6,39 @@ package mock_pmongo
 
 import (
 	context "context"
+	reflect "reflect"
+
 	pmongo "github.com/easyops-cn/mongo-driver-helper/pmongo"
 	gomock "github.com/golang/mock/gomock"
 	mongo "go.mongodb.org/mongo-driver/mongo"
 	options "go.mongodb.org/mongo-driver/mongo/options"
 	readpref "go.mongodb.org/mongo-driver/mongo/readpref"
-	reflect "reflect"
 )
 
-// MockClientInterface is a mock of ClientInterface interface
+// MockClientInterface is a mock of ClientInterface interface.
 type MockClientInterface struct {
 	ctrl     *gomock.Controller
 	recorder *MockClientInterfaceMockRecorder
 }
 
-// MockClientInterfaceMockRecorder is the mock recorder for MockClientInterface
+// MockClientInterfaceMockRecorder is the mock recorder for MockClientInterface.
 type MockClientInterfaceMockRecorder struct {
 	mock *MockClientInterface
 }
 
-// NewMockClientInterface creates a new mock instance
+// NewMockClientInterface creates a new mock instance.
 func NewMockClientInterface(ctrl *gomock.Controller) *MockClientInterface {
 	mock := &MockClientInterface{ctrl: ctrl}
 	mock.recorder = &MockClientInterfaceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockClientInterface) EXPECT() *MockClientInterfaceMockRecorder {
 	return m.recorder
 }
 
-// Connect mocks base method
+// Connect mocks base method.
 func (m *MockClientInterface) Connect(ctx context.Context) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Connect", ctx)
@@ -45,13 +46,13 @@ func (m *MockClientInterface) Connect(ctx context.Context) error {
 	return ret0
 }
 
-// Connect indicates an expected call of Connect
+// Connect indicates an expected call of Connect.
 func (mr *MockClientInterfaceMockRecorder) Connect(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Connect", reflect.TypeOf((*MockClientInterface)(nil).Connect), ctx)
 }
 
-// Database mocks base method
+// Database mocks base method.
 func (m *MockClientInterface) Database(name string, opts ...*options.DatabaseOptions) pmongo.DatabaseInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{name}
@@ -63,14 +64,14 @@ func (m *MockClientInterface) Database(name string, opts ...*options.DatabaseOpt
 	return ret0
 }
 
-// Database indicates an expected call of Database
+// Database indicates an expected call of Database.
 func (mr *MockClientInterfaceMockRecorder) Database(name interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{name}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Database", reflect.TypeOf((*MockClientInterface)(nil).Database), varargs...)
 }
 
-// Disconnect mocks base method
+// Disconnect mocks base method.
 func (m *MockClientInterface) Disconnect(ctx context.Context) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Disconnect", ctx)
@@ -78,13 +79,13 @@ func (m *MockClientInterface) Disconnect(ctx context.Context) error {
 	return ret0
 }
 
-// Disconnect indicates an expected call of Disconnect
+// Disconnect indicates an expected call of Disconnect.
 func (mr *MockClientInterfaceMockRecorder) Disconnect(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Disconnect", reflect.TypeOf((*MockClientInterface)(nil).Disconnect), ctx)
 }
 
-// ListDatabaseNames mocks base method
+// ListDatabaseNames mocks base method.
 func (m *MockClientInterface) ListDatabaseNames(ctx context.Context, filter interface{}, opts ...*options.ListDatabasesOptions) ([]string, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -97,14 +98,14 @@ func (m *MockClientInterface) ListDatabaseNames(ctx context.Context, filter inte
 	return ret0, ret1
 }
 
-// ListDatabaseNames indicates an expected call of ListDatabaseNames
+// ListDatabaseNames indicates an expected call of ListDatabaseNames.
 func (mr *MockClientInterfaceMockRecorder) ListDatabaseNames(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDatabaseNames", reflect.TypeOf((*MockClientInterface)(nil).ListDatabaseNames), varargs...)
 }
 
-// ListDatabases mocks base method
+// ListDatabases mocks base method.
 func (m *MockClientInterface) ListDatabases(ctx context.Context, filter interface{}, opts ...*options.ListDatabasesOptions) (mongo.ListDatabasesResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -117,14 +118,14 @@ func (m *MockClientInterface) ListDatabases(ctx context.Context, filter interfac
 	return ret0, ret1
 }
 
-// ListDatabases indicates an expected call of ListDatabases
+// ListDatabases indicates an expected call of ListDatabases.
 func (mr *MockClientInterfaceMockRecorder) ListDatabases(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListDatabases", reflect.TypeOf((*MockClientInterface)(nil).ListDatabases), varargs...)
 }
 
-// NumberSessionsInProgress mocks base method
+// NumberSessionsInProgress mocks base method.
 func (m *MockClientInterface) NumberSessionsInProgress() int {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "NumberSessionsInProgress")
@@ -132,13 +133,13 @@ func (m *MockClientInterface) NumberSessionsInProgress() int {
 	return ret0
 }
 
-// NumberSessionsInProgress indicates an expected call of NumberSessionsInProgress
+// NumberSessionsInProgress indicates an expected call of NumberSessionsInProgress.
 func (mr *MockClientInterfaceMockRecorder) NumberSessionsInProgress() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NumberSessionsInProgress", reflect.TypeOf((*MockClientInterface)(nil).NumberSessionsInProgress))
 }
 
-// Ping mocks base method
+// Ping mocks base method.
 func (m *MockClientInterface) Ping(ctx context.Context, rp *readpref.ReadPref) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Ping", ctx, rp)
@@ -146,32 +147,32 @@ func (m *MockClientInterface) Ping(ctx context.Context, rp *readpref.ReadPref) e
 	return ret0
 }
 
-// Ping indicates an expected call of Ping
+// Ping indicates an expected call of Ping.
 func (mr *MockClientInterfaceMockRecorder) Ping(ctx, rp interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Ping", reflect.TypeOf((*MockClientInterface)(nil).Ping), ctx, rp)
 }
 
-// StartSession mocks base method
-func (m *MockClientInterface) StartSession(opts ...*options.SessionOptions) (mongo.Session, error) {
+// StartSession mocks base method.
+func (m *MockClientInterface) StartSession(opts ...*options.SessionOptions) (pmongo.SessionInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{}
 	for _, a := range opts {
 		varargs = append(varargs, a)
 	}
 	ret := m.ctrl.Call(m, "StartSession", varargs...)
-	ret0, _ := ret[0].(mongo.Session)
+	ret0, _ := ret[0].(pmongo.SessionInterface)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// StartSession indicates an expected call of StartSession
+// StartSession indicates an expected call of StartSession.
 func (mr *MockClientInterfaceMockRecorder) StartSession(opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StartSession", reflect.TypeOf((*MockClientInterface)(nil).StartSession), opts...)
 }
 
-// UseSession mocks base method
+// UseSession mocks base method.
 func (m *MockClientInterface) UseSession(ctx context.Context, fn func(mongo.SessionContext) error) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "UseSession", ctx, fn)
@@ -179,13 +180,13 @@ func (m *MockClientInterface) UseSession(ctx context.Context, fn func(mongo.Sess
 	return ret0
 }
 
-// UseSession indicates an expected call of UseSession
+// UseSession indicates an expected call of UseSession.
 func (mr *MockClientInterfaceMockRecorder) UseSession(ctx, fn interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UseSession", reflect.TypeOf((*MockClientInterface)(nil).UseSession), ctx, fn)
 }
 
-// UseSessionWithOptions mocks base method
+// UseSessionWithOptions mocks base method.
 func (m *MockClientInterface) UseSessionWithOptions(ctx context.Context, opts *options.SessionOptions, fn func(mongo.SessionContext) error) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "UseSessionWithOptions", ctx, opts, fn)
@@ -193,13 +194,13 @@ func (m *MockClientInterface) UseSessionWithOptions(ctx context.Context, opts *o
 	return ret0
 }
 
-// UseSessionWithOptions indicates an expected call of UseSessionWithOptions
+// UseSessionWithOptions indicates an expected call of UseSessionWithOptions.
 func (mr *MockClientInterfaceMockRecorder) UseSessionWithOptions(ctx, opts, fn interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UseSessionWithOptions", reflect.TypeOf((*MockClientInterface)(nil).UseSessionWithOptions), ctx, opts, fn)
 }
 
-// Watch mocks base method
+// Watch mocks base method.
 func (m *MockClientInterface) Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, pipeline}
@@ -212,7 +213,7 @@ func (m *MockClientInterface) Watch(ctx context.Context, pipeline interface{}, o
 	return ret0, ret1
 }
 
-// Watch indicates an expected call of Watch
+// Watch indicates an expected call of Watch.
 func (mr *MockClientInterfaceMockRecorder) Watch(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, pipeline}, opts...)
