@@ -65,7 +65,7 @@ func (c *Client) Ping(ctx context.Context, rp *readpref.ReadPref) error {
 
 func (c *Client) StartSession(opts ...*options.SessionOptions) (SessionInterface, error) {
 	s, err := c.c.StartSession(opts...)
-	return &session{Session: s}, err
+	return &session{sess: s}, err
 }
 
 func (c *Client) UseSession(ctx context.Context, fn func(mongo.SessionContext) error) error {
