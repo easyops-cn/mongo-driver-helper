@@ -10,14 +10,17 @@ import (
 )
 
 type SessionInterface interface {
-	StartTransaction(options ...*options.TransactionOptions) error
-	AbortTransaction(ctx context.Context) error
-	CommitTransaction(ctx context.Context) error
-	WithTransaction(ctx context.Context, fn func(sessCtx mongo.SessionContext) (interface{}, error), opts ...*options.TransactionOptions) (interface{}, error)
+	StartTransaction(...*options.TransactionOptions) error
+	AbortTransaction(context.Context) error
+	CommitTransaction(context.Context) error
+	WithTransaction(ctx context.Context, fn func(sessCtx mongo.SessionContext) (interface{}, error),
+		opts ...*options.TransactionOptions) (interface{}, error)
+	EndSession(context.Context)
+
 	ClusterTime() bson.Raw
 	OperationTime() *primitive.Timestamp
 	Client() ClientInterface
-	EndSession(context.Context)
+	ID() bson.Raw
 
 	AdvanceClusterTime(bson.Raw) error
 	AdvanceOperationTime(*primitive.Timestamp) error
@@ -53,6 +56,14 @@ func (s session) OperationTime() *primitive.Timestamp {
 	return s.sess.OperationTime()
 }
 
+func (s session) Client() ClientInterface {
+	return &Client{s.sess.Client()}
+}
+
+func (s session) ID() bson.Raw {
+	return s.sess.ID()
+}
+
 func (s session) EndSession(ctx context.Context) {
 	s.sess.EndSession(ctx)
 }
@@ -63,8 +74,4 @@ func (s session) AdvanceClusterTime(raw bson.Raw) error {
 
 func (s session) AdvanceOperationTime(timestamp *primitive.Timestamp) error {
 	return s.sess.AdvanceOperationTime(timestamp)
-}
-
-func (s session) Client() ClientInterface {
-	return &Client{s.sess.Client()}
 }
