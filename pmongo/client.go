@@ -16,7 +16,7 @@ type ClientInterface interface {
 	ListDatabases(ctx context.Context, filter interface{}, opts ...*options.ListDatabasesOptions) (mongo.ListDatabasesResult, error)
 	NumberSessionsInProgress() int
 	Ping(ctx context.Context, rp *readpref.ReadPref) error
-	StartSession(opts ...*options.SessionOptions) (mongo.Session, error)
+	StartSession(opts ...*options.SessionOptions) (SessionInterface, error)
 	UseSession(ctx context.Context, fn func(mongo.SessionContext) error) error
 	UseSessionWithOptions(ctx context.Context, opts *options.SessionOptions, fn func(mongo.SessionContext) error) error
 	Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error)
@@ -63,8 +63,9 @@ func (c *Client) Ping(ctx context.Context, rp *readpref.ReadPref) error {
 	return c.c.Ping(ctx, rp)
 }
 
-func (c *Client) StartSession(opts ...*options.SessionOptions) (mongo.Session, error) {
-	return c.c.StartSession(opts...)
+func (c *Client) StartSession(opts ...*options.SessionOptions) (SessionInterface, error) {
+	s, err := c.c.StartSession(opts...)
+	return &session{sess: s}, err
 }
 
 func (c *Client) UseSession(ctx context.Context, fn func(mongo.SessionContext) error) error {
