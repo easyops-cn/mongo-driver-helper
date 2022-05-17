@@ -6,6 +6,8 @@ package mock_pmongo
 
 import (
 	context "context"
+	reflect "reflect"
+
 	pmongo "github.com/easyops-cn/mongo-driver-helper/pmongo"
 	gomock "github.com/golang/mock/gomock"
 	mongo "go.mongodb.org/mongo-driver/mongo"
@@ -13,33 +15,32 @@ import (
 	readconcern "go.mongodb.org/mongo-driver/mongo/readconcern"
 	readpref "go.mongodb.org/mongo-driver/mongo/readpref"
 	writeconcern "go.mongodb.org/mongo-driver/mongo/writeconcern"
-	reflect "reflect"
 )
 
-// MockDatabaseInterface is a mock of DatabaseInterface interface
+// MockDatabaseInterface is a mock of DatabaseInterface interface.
 type MockDatabaseInterface struct {
 	ctrl     *gomock.Controller
 	recorder *MockDatabaseInterfaceMockRecorder
 }
 
-// MockDatabaseInterfaceMockRecorder is the mock recorder for MockDatabaseInterface
+// MockDatabaseInterfaceMockRecorder is the mock recorder for MockDatabaseInterface.
 type MockDatabaseInterfaceMockRecorder struct {
 	mock *MockDatabaseInterface
 }
 
-// NewMockDatabaseInterface creates a new mock instance
+// NewMockDatabaseInterface creates a new mock instance.
 func NewMockDatabaseInterface(ctrl *gomock.Controller) *MockDatabaseInterface {
 	mock := &MockDatabaseInterface{ctrl: ctrl}
 	mock.recorder = &MockDatabaseInterfaceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockDatabaseInterface) EXPECT() *MockDatabaseInterfaceMockRecorder {
 	return m.recorder
 }
 
-// Aggregate mocks base method
+// Aggregate mocks base method.
 func (m *MockDatabaseInterface) Aggregate(ctx context.Context, pipeline interface{}, opts ...*options.AggregateOptions) (pmongo.CursorInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, pipeline}
@@ -52,14 +53,14 @@ func (m *MockDatabaseInterface) Aggregate(ctx context.Context, pipeline interfac
 	return ret0, ret1
 }
 
-// Aggregate indicates an expected call of Aggregate
+// Aggregate indicates an expected call of Aggregate.
 func (mr *MockDatabaseInterfaceMockRecorder) Aggregate(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, pipeline}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Aggregate", reflect.TypeOf((*MockDatabaseInterface)(nil).Aggregate), varargs...)
 }
 
-// Client mocks base method
+// Client mocks base method.
 func (m *MockDatabaseInterface) Client() pmongo.ClientInterface {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Client")
@@ -67,13 +68,13 @@ func (m *MockDatabaseInterface) Client() pmongo.ClientInterface {
 	return ret0
 }
 
-// Client indicates an expected call of Client
+// Client indicates an expected call of Client.
 func (mr *MockDatabaseInterfaceMockRecorder) Client() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Client", reflect.TypeOf((*MockDatabaseInterface)(nil).Client))
 }
 
-// Collection mocks base method
+// Collection mocks base method.
 func (m *MockDatabaseInterface) Collection(name string, opts ...*options.CollectionOptions) pmongo.CollectionInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{name}
@@ -85,14 +86,14 @@ func (m *MockDatabaseInterface) Collection(name string, opts ...*options.Collect
 	return ret0
 }
 
-// Collection indicates an expected call of Collection
+// Collection indicates an expected call of Collection.
 func (mr *MockDatabaseInterfaceMockRecorder) Collection(name interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{name}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Collection", reflect.TypeOf((*MockDatabaseInterface)(nil).Collection), varargs...)
 }
 
-// Drop mocks base method
+// Drop mocks base method.
 func (m *MockDatabaseInterface) Drop(ctx context.Context) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Drop", ctx)
@@ -100,13 +101,13 @@ func (m *MockDatabaseInterface) Drop(ctx context.Context) error {
 	return ret0
 }
 
-// Drop indicates an expected call of Drop
+// Drop indicates an expected call of Drop.
 func (mr *MockDatabaseInterfaceMockRecorder) Drop(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Drop", reflect.TypeOf((*MockDatabaseInterface)(nil).Drop), ctx)
 }
 
-// ListCollectionNames mocks base method
+// ListCollectionNames mocks base method.
 func (m *MockDatabaseInterface) ListCollectionNames(ctx context.Context, filter interface{}, opts ...*options.ListCollectionsOptions) ([]string, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -119,14 +120,14 @@ func (m *MockDatabaseInterface) ListCollectionNames(ctx context.Context, filter 
 	return ret0, ret1
 }
 
-// ListCollectionNames indicates an expected call of ListCollectionNames
+// ListCollectionNames indicates an expected call of ListCollectionNames.
 func (mr *MockDatabaseInterfaceMockRecorder) ListCollectionNames(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCollectionNames", reflect.TypeOf((*MockDatabaseInterface)(nil).ListCollectionNames), varargs...)
 }
 
-// ListCollections mocks base method
+// ListCollections mocks base method.
 func (m *MockDatabaseInterface) ListCollections(ctx context.Context, filter interface{}, opts ...*options.ListCollectionsOptions) (pmongo.CursorInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -139,14 +140,14 @@ func (m *MockDatabaseInterface) ListCollections(ctx context.Context, filter inte
 	return ret0, ret1
 }
 
-// ListCollections indicates an expected call of ListCollections
+// ListCollections indicates an expected call of ListCollections.
 func (mr *MockDatabaseInterfaceMockRecorder) ListCollections(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListCollections", reflect.TypeOf((*MockDatabaseInterface)(nil).ListCollections), varargs...)
 }
 
-// Name mocks base method
+// Name mocks base method.
 func (m *MockDatabaseInterface) Name() string {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Name")
@@ -154,114 +155,13 @@ func (m *MockDatabaseInterface) Name() string {
 	return ret0
 }
 
-// Name indicates an expected call of Name
+// Name indicates an expected call of Name.
 func (mr *MockDatabaseInterfaceMockRecorder) Name() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Name", reflect.TypeOf((*MockDatabaseInterface)(nil).Name))
 }
 
-// ReadConcern mocks base method
-func (m *MockDatabaseInterface) ReadConcern() *readconcern.ReadConcern {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ReadConcern")
-	ret0, _ := ret[0].(*readconcern.ReadConcern)
-	return ret0
-}
-
-// ReadConcern indicates an expected call of ReadConcern
-func (mr *MockDatabaseInterfaceMockRecorder) ReadConcern() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadConcern", reflect.TypeOf((*MockDatabaseInterface)(nil).ReadConcern))
-}
-
-// ReadPreference mocks base method
-func (m *MockDatabaseInterface) ReadPreference() *readpref.ReadPref {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "ReadPreference")
-	ret0, _ := ret[0].(*readpref.ReadPref)
-	return ret0
-}
-
-// ReadPreference indicates an expected call of ReadPreference
-func (mr *MockDatabaseInterfaceMockRecorder) ReadPreference() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadPreference", reflect.TypeOf((*MockDatabaseInterface)(nil).ReadPreference))
-}
-
-// RunCommand mocks base method
-func (m *MockDatabaseInterface) RunCommand(ctx context.Context, runCommand interface{}, opts ...*options.RunCmdOptions) pmongo.SingleResultInterface {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, runCommand}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "RunCommand", varargs...)
-	ret0, _ := ret[0].(pmongo.SingleResultInterface)
-	return ret0
-}
-
-// RunCommand indicates an expected call of RunCommand
-func (mr *MockDatabaseInterfaceMockRecorder) RunCommand(ctx, runCommand interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, runCommand}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RunCommand", reflect.TypeOf((*MockDatabaseInterface)(nil).RunCommand), varargs...)
-}
-
-// RunCommandCursor mocks base method
-func (m *MockDatabaseInterface) RunCommandCursor(ctx context.Context, runCommand interface{}, opts ...*options.RunCmdOptions) (pmongo.CursorInterface, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, runCommand}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "RunCommandCursor", varargs...)
-	ret0, _ := ret[0].(pmongo.CursorInterface)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// RunCommandCursor indicates an expected call of RunCommandCursor
-func (mr *MockDatabaseInterfaceMockRecorder) RunCommandCursor(ctx, runCommand interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, runCommand}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RunCommandCursor", reflect.TypeOf((*MockDatabaseInterface)(nil).RunCommandCursor), varargs...)
-}
-
-// Watch mocks base method
-func (m *MockDatabaseInterface) Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error) {
-	m.ctrl.T.Helper()
-	varargs := []interface{}{ctx, pipeline}
-	for _, a := range opts {
-		varargs = append(varargs, a)
-	}
-	ret := m.ctrl.Call(m, "Watch", varargs...)
-	ret0, _ := ret[0].(*mongo.ChangeStream)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// Watch indicates an expected call of Watch
-func (mr *MockDatabaseInterfaceMockRecorder) Watch(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	varargs := append([]interface{}{ctx, pipeline}, opts...)
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Watch", reflect.TypeOf((*MockDatabaseInterface)(nil).Watch), varargs...)
-}
-
-// WriteConcern mocks base method
-func (m *MockDatabaseInterface) WriteConcern() *writeconcern.WriteConcern {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "WriteConcern")
-	ret0, _ := ret[0].(*writeconcern.WriteConcern)
-	return ret0
-}
-
-// WriteConcern indicates an expected call of WriteConcern
-func (mr *MockDatabaseInterfaceMockRecorder) WriteConcern() *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WriteConcern", reflect.TypeOf((*MockDatabaseInterface)(nil).WriteConcern))
-}
-
-// NewBucket mocks base method
+// NewBucket mocks base method.
 func (m *MockDatabaseInterface) NewBucket(opts ...*options.BucketOptions) (pmongo.BucketInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{}
@@ -274,8 +174,109 @@ func (m *MockDatabaseInterface) NewBucket(opts ...*options.BucketOptions) (pmong
 	return ret0, ret1
 }
 
-// NewBucket indicates an expected call of NewBucket
+// NewBucket indicates an expected call of NewBucket.
 func (mr *MockDatabaseInterfaceMockRecorder) NewBucket(opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NewBucket", reflect.TypeOf((*MockDatabaseInterface)(nil).NewBucket), opts...)
+}
+
+// ReadConcern mocks base method.
+func (m *MockDatabaseInterface) ReadConcern() *readconcern.ReadConcern {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadConcern")
+	ret0, _ := ret[0].(*readconcern.ReadConcern)
+	return ret0
+}
+
+// ReadConcern indicates an expected call of ReadConcern.
+func (mr *MockDatabaseInterfaceMockRecorder) ReadConcern() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadConcern", reflect.TypeOf((*MockDatabaseInterface)(nil).ReadConcern))
+}
+
+// ReadPreference mocks base method.
+func (m *MockDatabaseInterface) ReadPreference() *readpref.ReadPref {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadPreference")
+	ret0, _ := ret[0].(*readpref.ReadPref)
+	return ret0
+}
+
+// ReadPreference indicates an expected call of ReadPreference.
+func (mr *MockDatabaseInterfaceMockRecorder) ReadPreference() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadPreference", reflect.TypeOf((*MockDatabaseInterface)(nil).ReadPreference))
+}
+
+// RunCommand mocks base method.
+func (m *MockDatabaseInterface) RunCommand(ctx context.Context, runCommand interface{}, opts ...*options.RunCmdOptions) pmongo.SingleResultInterface {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{ctx, runCommand}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "RunCommand", varargs...)
+	ret0, _ := ret[0].(pmongo.SingleResultInterface)
+	return ret0
+}
+
+// RunCommand indicates an expected call of RunCommand.
+func (mr *MockDatabaseInterfaceMockRecorder) RunCommand(ctx, runCommand interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{ctx, runCommand}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RunCommand", reflect.TypeOf((*MockDatabaseInterface)(nil).RunCommand), varargs...)
+}
+
+// RunCommandCursor mocks base method.
+func (m *MockDatabaseInterface) RunCommandCursor(ctx context.Context, runCommand interface{}, opts ...*options.RunCmdOptions) (pmongo.CursorInterface, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{ctx, runCommand}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "RunCommandCursor", varargs...)
+	ret0, _ := ret[0].(pmongo.CursorInterface)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// RunCommandCursor indicates an expected call of RunCommandCursor.
+func (mr *MockDatabaseInterfaceMockRecorder) RunCommandCursor(ctx, runCommand interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{ctx, runCommand}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RunCommandCursor", reflect.TypeOf((*MockDatabaseInterface)(nil).RunCommandCursor), varargs...)
+}
+
+// Watch mocks base method.
+func (m *MockDatabaseInterface) Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{ctx, pipeline}
+	for _, a := range opts {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "Watch", varargs...)
+	ret0, _ := ret[0].(*mongo.ChangeStream)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Watch indicates an expected call of Watch.
+func (mr *MockDatabaseInterfaceMockRecorder) Watch(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{ctx, pipeline}, opts...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Watch", reflect.TypeOf((*MockDatabaseInterface)(nil).Watch), varargs...)
+}
+
+// WriteConcern mocks base method.
+func (m *MockDatabaseInterface) WriteConcern() *writeconcern.WriteConcern {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "WriteConcern")
+	ret0, _ := ret[0].(*writeconcern.WriteConcern)
+	return ret0
+}
+
+// WriteConcern indicates an expected call of WriteConcern.
+func (mr *MockDatabaseInterfaceMockRecorder) WriteConcern() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "WriteConcern", reflect.TypeOf((*MockDatabaseInterface)(nil).WriteConcern))
 }

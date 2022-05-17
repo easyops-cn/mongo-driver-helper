@@ -6,37 +6,38 @@ package mock_pmongo
 
 import (
 	context "context"
+	reflect "reflect"
+
 	pmongo "github.com/easyops-cn/mongo-driver-helper/pmongo"
 	gomock "github.com/golang/mock/gomock"
 	mongo "go.mongodb.org/mongo-driver/mongo"
 	options "go.mongodb.org/mongo-driver/mongo/options"
-	reflect "reflect"
 )
 
-// MockCollectionInterface is a mock of CollectionInterface interface
+// MockCollectionInterface is a mock of CollectionInterface interface.
 type MockCollectionInterface struct {
 	ctrl     *gomock.Controller
 	recorder *MockCollectionInterfaceMockRecorder
 }
 
-// MockCollectionInterfaceMockRecorder is the mock recorder for MockCollectionInterface
+// MockCollectionInterfaceMockRecorder is the mock recorder for MockCollectionInterface.
 type MockCollectionInterfaceMockRecorder struct {
 	mock *MockCollectionInterface
 }
 
-// NewMockCollectionInterface creates a new mock instance
+// NewMockCollectionInterface creates a new mock instance.
 func NewMockCollectionInterface(ctrl *gomock.Controller) *MockCollectionInterface {
 	mock := &MockCollectionInterface{ctrl: ctrl}
 	mock.recorder = &MockCollectionInterfaceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockCollectionInterface) EXPECT() *MockCollectionInterfaceMockRecorder {
 	return m.recorder
 }
 
-// Aggregate mocks base method
+// Aggregate mocks base method.
 func (m *MockCollectionInterface) Aggregate(ctx context.Context, pipeline interface{}, opts ...*options.AggregateOptions) (pmongo.CursorInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, pipeline}
@@ -49,14 +50,14 @@ func (m *MockCollectionInterface) Aggregate(ctx context.Context, pipeline interf
 	return ret0, ret1
 }
 
-// Aggregate indicates an expected call of Aggregate
+// Aggregate indicates an expected call of Aggregate.
 func (mr *MockCollectionInterfaceMockRecorder) Aggregate(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, pipeline}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Aggregate", reflect.TypeOf((*MockCollectionInterface)(nil).Aggregate), varargs...)
 }
 
-// BulkWrite mocks base method
+// BulkWrite mocks base method.
 func (m *MockCollectionInterface) BulkWrite(ctx context.Context, models []mongo.WriteModel, opts ...*options.BulkWriteOptions) (*mongo.BulkWriteResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, models}
@@ -69,14 +70,14 @@ func (m *MockCollectionInterface) BulkWrite(ctx context.Context, models []mongo.
 	return ret0, ret1
 }
 
-// BulkWrite indicates an expected call of BulkWrite
+// BulkWrite indicates an expected call of BulkWrite.
 func (mr *MockCollectionInterfaceMockRecorder) BulkWrite(ctx, models interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, models}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "BulkWrite", reflect.TypeOf((*MockCollectionInterface)(nil).BulkWrite), varargs...)
 }
 
-// Clone mocks base method
+// Clone mocks base method.
 func (m *MockCollectionInterface) Clone(opts ...*options.CollectionOptions) (pmongo.CollectionInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{}
@@ -89,13 +90,13 @@ func (m *MockCollectionInterface) Clone(opts ...*options.CollectionOptions) (pmo
 	return ret0, ret1
 }
 
-// Clone indicates an expected call of Clone
+// Clone indicates an expected call of Clone.
 func (mr *MockCollectionInterfaceMockRecorder) Clone(opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Clone", reflect.TypeOf((*MockCollectionInterface)(nil).Clone), opts...)
 }
 
-// CountDocuments mocks base method
+// CountDocuments mocks base method.
 func (m *MockCollectionInterface) CountDocuments(ctx context.Context, filter interface{}, opts ...*options.CountOptions) (int64, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -108,14 +109,14 @@ func (m *MockCollectionInterface) CountDocuments(ctx context.Context, filter int
 	return ret0, ret1
 }
 
-// CountDocuments indicates an expected call of CountDocuments
+// CountDocuments indicates an expected call of CountDocuments.
 func (mr *MockCollectionInterfaceMockRecorder) CountDocuments(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CountDocuments", reflect.TypeOf((*MockCollectionInterface)(nil).CountDocuments), varargs...)
 }
 
-// Database mocks base method
+// Database mocks base method.
 func (m *MockCollectionInterface) Database() pmongo.DatabaseInterface {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Database")
@@ -123,13 +124,13 @@ func (m *MockCollectionInterface) Database() pmongo.DatabaseInterface {
 	return ret0
 }
 
-// Database indicates an expected call of Database
+// Database indicates an expected call of Database.
 func (mr *MockCollectionInterfaceMockRecorder) Database() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Database", reflect.TypeOf((*MockCollectionInterface)(nil).Database))
 }
 
-// DeleteMany mocks base method
+// DeleteMany mocks base method.
 func (m *MockCollectionInterface) DeleteMany(ctx context.Context, filter interface{}, opts ...*options.DeleteOptions) (*mongo.DeleteResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -142,14 +143,14 @@ func (m *MockCollectionInterface) DeleteMany(ctx context.Context, filter interfa
 	return ret0, ret1
 }
 
-// DeleteMany indicates an expected call of DeleteMany
+// DeleteMany indicates an expected call of DeleteMany.
 func (mr *MockCollectionInterfaceMockRecorder) DeleteMany(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteMany", reflect.TypeOf((*MockCollectionInterface)(nil).DeleteMany), varargs...)
 }
 
-// DeleteOne mocks base method
+// DeleteOne mocks base method.
 func (m *MockCollectionInterface) DeleteOne(ctx context.Context, filter interface{}, opts ...*options.DeleteOptions) (*mongo.DeleteResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -162,14 +163,14 @@ func (m *MockCollectionInterface) DeleteOne(ctx context.Context, filter interfac
 	return ret0, ret1
 }
 
-// DeleteOne indicates an expected call of DeleteOne
+// DeleteOne indicates an expected call of DeleteOne.
 func (mr *MockCollectionInterfaceMockRecorder) DeleteOne(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteOne", reflect.TypeOf((*MockCollectionInterface)(nil).DeleteOne), varargs...)
 }
 
-// Distinct mocks base method
+// Distinct mocks base method.
 func (m *MockCollectionInterface) Distinct(ctx context.Context, fieldName string, filter interface{}, opts ...*options.DistinctOptions) ([]interface{}, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, fieldName, filter}
@@ -182,14 +183,14 @@ func (m *MockCollectionInterface) Distinct(ctx context.Context, fieldName string
 	return ret0, ret1
 }
 
-// Distinct indicates an expected call of Distinct
+// Distinct indicates an expected call of Distinct.
 func (mr *MockCollectionInterfaceMockRecorder) Distinct(ctx, fieldName, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, fieldName, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Distinct", reflect.TypeOf((*MockCollectionInterface)(nil).Distinct), varargs...)
 }
 
-// Drop mocks base method
+// Drop mocks base method.
 func (m *MockCollectionInterface) Drop(ctx context.Context) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Drop", ctx)
@@ -197,13 +198,13 @@ func (m *MockCollectionInterface) Drop(ctx context.Context) error {
 	return ret0
 }
 
-// Drop indicates an expected call of Drop
+// Drop indicates an expected call of Drop.
 func (mr *MockCollectionInterfaceMockRecorder) Drop(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Drop", reflect.TypeOf((*MockCollectionInterface)(nil).Drop), ctx)
 }
 
-// EstimatedDocumentCount mocks base method
+// EstimatedDocumentCount mocks base method.
 func (m *MockCollectionInterface) EstimatedDocumentCount(ctx context.Context, opts ...*options.EstimatedDocumentCountOptions) (int64, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx}
@@ -216,14 +217,14 @@ func (m *MockCollectionInterface) EstimatedDocumentCount(ctx context.Context, op
 	return ret0, ret1
 }
 
-// EstimatedDocumentCount indicates an expected call of EstimatedDocumentCount
+// EstimatedDocumentCount indicates an expected call of EstimatedDocumentCount.
 func (mr *MockCollectionInterfaceMockRecorder) EstimatedDocumentCount(ctx interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EstimatedDocumentCount", reflect.TypeOf((*MockCollectionInterface)(nil).EstimatedDocumentCount), varargs...)
 }
 
-// Find mocks base method
+// Find mocks base method.
 func (m *MockCollectionInterface) Find(ctx context.Context, filter interface{}, opts ...*options.FindOptions) (pmongo.CursorInterface, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -236,14 +237,14 @@ func (m *MockCollectionInterface) Find(ctx context.Context, filter interface{}, 
 	return ret0, ret1
 }
 
-// Find indicates an expected call of Find
+// Find indicates an expected call of Find.
 func (mr *MockCollectionInterfaceMockRecorder) Find(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Find", reflect.TypeOf((*MockCollectionInterface)(nil).Find), varargs...)
 }
 
-// FindOne mocks base method
+// FindOne mocks base method.
 func (m *MockCollectionInterface) FindOne(ctx context.Context, filter interface{}, opts ...*options.FindOneOptions) pmongo.SingleResultInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -255,14 +256,14 @@ func (m *MockCollectionInterface) FindOne(ctx context.Context, filter interface{
 	return ret0
 }
 
-// FindOne indicates an expected call of FindOne
+// FindOne indicates an expected call of FindOne.
 func (mr *MockCollectionInterfaceMockRecorder) FindOne(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOne", reflect.TypeOf((*MockCollectionInterface)(nil).FindOne), varargs...)
 }
 
-// FindOneAndDelete mocks base method
+// FindOneAndDelete mocks base method.
 func (m *MockCollectionInterface) FindOneAndDelete(ctx context.Context, filter interface{}, opts ...*options.FindOneAndDeleteOptions) pmongo.SingleResultInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter}
@@ -274,14 +275,14 @@ func (m *MockCollectionInterface) FindOneAndDelete(ctx context.Context, filter i
 	return ret0
 }
 
-// FindOneAndDelete indicates an expected call of FindOneAndDelete
+// FindOneAndDelete indicates an expected call of FindOneAndDelete.
 func (mr *MockCollectionInterfaceMockRecorder) FindOneAndDelete(ctx, filter interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOneAndDelete", reflect.TypeOf((*MockCollectionInterface)(nil).FindOneAndDelete), varargs...)
 }
 
-// FindOneAndReplace mocks base method
+// FindOneAndReplace mocks base method.
 func (m *MockCollectionInterface) FindOneAndReplace(ctx context.Context, filter, replacement interface{}, opts ...*options.FindOneAndReplaceOptions) pmongo.SingleResultInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter, replacement}
@@ -293,14 +294,14 @@ func (m *MockCollectionInterface) FindOneAndReplace(ctx context.Context, filter,
 	return ret0
 }
 
-// FindOneAndReplace indicates an expected call of FindOneAndReplace
+// FindOneAndReplace indicates an expected call of FindOneAndReplace.
 func (mr *MockCollectionInterfaceMockRecorder) FindOneAndReplace(ctx, filter, replacement interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter, replacement}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOneAndReplace", reflect.TypeOf((*MockCollectionInterface)(nil).FindOneAndReplace), varargs...)
 }
 
-// FindOneAndUpdate mocks base method
+// FindOneAndUpdate mocks base method.
 func (m *MockCollectionInterface) FindOneAndUpdate(ctx context.Context, filter, update interface{}, opts ...*options.FindOneAndUpdateOptions) pmongo.SingleResultInterface {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter, update}
@@ -312,14 +313,14 @@ func (m *MockCollectionInterface) FindOneAndUpdate(ctx context.Context, filter, 
 	return ret0
 }
 
-// FindOneAndUpdate indicates an expected call of FindOneAndUpdate
+// FindOneAndUpdate indicates an expected call of FindOneAndUpdate.
 func (mr *MockCollectionInterfaceMockRecorder) FindOneAndUpdate(ctx, filter, update interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter, update}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOneAndUpdate", reflect.TypeOf((*MockCollectionInterface)(nil).FindOneAndUpdate), varargs...)
 }
 
-// Indexes mocks base method
+// Indexes mocks base method.
 func (m *MockCollectionInterface) Indexes() pmongo.IndexViewInterface {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Indexes")
@@ -327,13 +328,13 @@ func (m *MockCollectionInterface) Indexes() pmongo.IndexViewInterface {
 	return ret0
 }
 
-// Indexes indicates an expected call of Indexes
+// Indexes indicates an expected call of Indexes.
 func (mr *MockCollectionInterfaceMockRecorder) Indexes() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Indexes", reflect.TypeOf((*MockCollectionInterface)(nil).Indexes))
 }
 
-// InsertMany mocks base method
+// InsertMany mocks base method.
 func (m *MockCollectionInterface) InsertMany(ctx context.Context, documents []interface{}, opts ...*options.InsertManyOptions) (*mongo.InsertManyResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, documents}
@@ -346,14 +347,14 @@ func (m *MockCollectionInterface) InsertMany(ctx context.Context, documents []in
 	return ret0, ret1
 }
 
-// InsertMany indicates an expected call of InsertMany
+// InsertMany indicates an expected call of InsertMany.
 func (mr *MockCollectionInterfaceMockRecorder) InsertMany(ctx, documents interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, documents}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InsertMany", reflect.TypeOf((*MockCollectionInterface)(nil).InsertMany), varargs...)
 }
 
-// InsertOne mocks base method
+// InsertOne mocks base method.
 func (m *MockCollectionInterface) InsertOne(ctx context.Context, document interface{}, opts ...*options.InsertOneOptions) (*mongo.InsertOneResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, document}
@@ -366,14 +367,14 @@ func (m *MockCollectionInterface) InsertOne(ctx context.Context, document interf
 	return ret0, ret1
 }
 
-// InsertOne indicates an expected call of InsertOne
+// InsertOne indicates an expected call of InsertOne.
 func (mr *MockCollectionInterfaceMockRecorder) InsertOne(ctx, document interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, document}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InsertOne", reflect.TypeOf((*MockCollectionInterface)(nil).InsertOne), varargs...)
 }
 
-// Name mocks base method
+// Name mocks base method.
 func (m *MockCollectionInterface) Name() string {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Name")
@@ -381,13 +382,13 @@ func (m *MockCollectionInterface) Name() string {
 	return ret0
 }
 
-// Name indicates an expected call of Name
+// Name indicates an expected call of Name.
 func (mr *MockCollectionInterfaceMockRecorder) Name() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Name", reflect.TypeOf((*MockCollectionInterface)(nil).Name))
 }
 
-// ReplaceOne mocks base method
+// ReplaceOne mocks base method.
 func (m *MockCollectionInterface) ReplaceOne(ctx context.Context, filter, replacement interface{}, opts ...*options.ReplaceOptions) (*mongo.UpdateResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter, replacement}
@@ -400,14 +401,14 @@ func (m *MockCollectionInterface) ReplaceOne(ctx context.Context, filter, replac
 	return ret0, ret1
 }
 
-// ReplaceOne indicates an expected call of ReplaceOne
+// ReplaceOne indicates an expected call of ReplaceOne.
 func (mr *MockCollectionInterfaceMockRecorder) ReplaceOne(ctx, filter, replacement interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter, replacement}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReplaceOne", reflect.TypeOf((*MockCollectionInterface)(nil).ReplaceOne), varargs...)
 }
 
-// UpdateMany mocks base method
+// UpdateMany mocks base method.
 func (m *MockCollectionInterface) UpdateMany(ctx context.Context, filter, update interface{}, opts ...*options.UpdateOptions) (*mongo.UpdateResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter, update}
@@ -420,14 +421,14 @@ func (m *MockCollectionInterface) UpdateMany(ctx context.Context, filter, update
 	return ret0, ret1
 }
 
-// UpdateMany indicates an expected call of UpdateMany
+// UpdateMany indicates an expected call of UpdateMany.
 func (mr *MockCollectionInterfaceMockRecorder) UpdateMany(ctx, filter, update interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter, update}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateMany", reflect.TypeOf((*MockCollectionInterface)(nil).UpdateMany), varargs...)
 }
 
-// UpdateOne mocks base method
+// UpdateOne mocks base method.
 func (m *MockCollectionInterface) UpdateOne(ctx context.Context, filter, update interface{}, opts ...*options.UpdateOptions) (*mongo.UpdateResult, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, filter, update}
@@ -440,14 +441,14 @@ func (m *MockCollectionInterface) UpdateOne(ctx context.Context, filter, update 
 	return ret0, ret1
 }
 
-// UpdateOne indicates an expected call of UpdateOne
+// UpdateOne indicates an expected call of UpdateOne.
 func (mr *MockCollectionInterfaceMockRecorder) UpdateOne(ctx, filter, update interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, filter, update}, opts...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "UpdateOne", reflect.TypeOf((*MockCollectionInterface)(nil).UpdateOne), varargs...)
 }
 
-// Watch mocks base method
+// Watch mocks base method.
 func (m *MockCollectionInterface) Watch(ctx context.Context, pipeline interface{}, opts ...*options.ChangeStreamOptions) (*mongo.ChangeStream, error) {
 	m.ctrl.T.Helper()
 	varargs := []interface{}{ctx, pipeline}
@@ -460,7 +461,7 @@ func (m *MockCollectionInterface) Watch(ctx context.Context, pipeline interface{
 	return ret0, ret1
 }
 
-// Watch indicates an expected call of Watch
+// Watch indicates an expected call of Watch.
 func (mr *MockCollectionInterfaceMockRecorder) Watch(ctx, pipeline interface{}, opts ...interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{ctx, pipeline}, opts...)

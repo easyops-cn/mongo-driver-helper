@@ -5,35 +5,36 @@
 package mock_pmongo
 
 import (
+	reflect "reflect"
+
 	gomock "github.com/golang/mock/gomock"
 	bson "go.mongodb.org/mongo-driver/bson"
-	reflect "reflect"
 )
 
-// MockSingleResultInterface is a mock of SingleResultInterface interface
+// MockSingleResultInterface is a mock of SingleResultInterface interface.
 type MockSingleResultInterface struct {
 	ctrl     *gomock.Controller
 	recorder *MockSingleResultInterfaceMockRecorder
 }
 
-// MockSingleResultInterfaceMockRecorder is the mock recorder for MockSingleResultInterface
+// MockSingleResultInterfaceMockRecorder is the mock recorder for MockSingleResultInterface.
 type MockSingleResultInterfaceMockRecorder struct {
 	mock *MockSingleResultInterface
 }
 
-// NewMockSingleResultInterface creates a new mock instance
+// NewMockSingleResultInterface creates a new mock instance.
 func NewMockSingleResultInterface(ctrl *gomock.Controller) *MockSingleResultInterface {
 	mock := &MockSingleResultInterface{ctrl: ctrl}
 	mock.recorder = &MockSingleResultInterfaceMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use
+// EXPECT returns an object that allows the caller to indicate expected use.
 func (m *MockSingleResultInterface) EXPECT() *MockSingleResultInterfaceMockRecorder {
 	return m.recorder
 }
 
-// Decode mocks base method
+// Decode mocks base method.
 func (m *MockSingleResultInterface) Decode(v interface{}) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Decode", v)
@@ -41,13 +42,13 @@ func (m *MockSingleResultInterface) Decode(v interface{}) error {
 	return ret0
 }
 
-// Decode indicates an expected call of Decode
+// Decode indicates an expected call of Decode.
 func (mr *MockSingleResultInterfaceMockRecorder) Decode(v interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Decode", reflect.TypeOf((*MockSingleResultInterface)(nil).Decode), v)
 }
 
-// DecodeBytes mocks base method
+// DecodeBytes mocks base method.
 func (m *MockSingleResultInterface) DecodeBytes() (bson.Raw, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "DecodeBytes")
@@ -56,13 +57,13 @@ func (m *MockSingleResultInterface) DecodeBytes() (bson.Raw, error) {
 	return ret0, ret1
 }
 
-// DecodeBytes indicates an expected call of DecodeBytes
+// DecodeBytes indicates an expected call of DecodeBytes.
 func (mr *MockSingleResultInterfaceMockRecorder) DecodeBytes() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DecodeBytes", reflect.TypeOf((*MockSingleResultInterface)(nil).DecodeBytes))
 }
 
-// Err mocks base method
+// Err mocks base method.
 func (m *MockSingleResultInterface) Err() error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Err")
@@ -70,7 +71,7 @@ func (m *MockSingleResultInterface) Err() error {
 	return ret0
 }
 
-// Err indicates an expected call of Err
+// Err indicates an expected call of Err.
 func (mr *MockSingleResultInterfaceMockRecorder) Err() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Err", reflect.TypeOf((*MockSingleResultInterface)(nil).Err))
