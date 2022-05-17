@@ -10,12 +10,12 @@ import (
 )
 
 type SessionInterface interface {
-	StartTransaction(...*options.TransactionOptions) error
-	AbortTransaction(context.Context) error
-	CommitTransaction(context.Context) error
+	StartTransaction(opts ...*options.TransactionOptions) error
+	AbortTransaction(ctx context.Context) error
+	CommitTransaction(ctx context.Context) error
 	WithTransaction(ctx context.Context, fn func(sessCtx mongo.SessionContext) (interface{}, error),
 		opts ...*options.TransactionOptions) (interface{}, error)
-	EndSession(context.Context)
+	EndSession(ctx context.Context)
 
 	ClusterTime() bson.Raw
 	OperationTime() *primitive.Timestamp
@@ -23,7 +23,7 @@ type SessionInterface interface {
 	ID() bson.Raw
 
 	AdvanceClusterTime(bson.Raw) error
-	AdvanceOperationTime(*primitive.Timestamp) error
+	AdvanceOperationTime(ts *primitive.Timestamp) error
 }
 
 var _ SessionInterface = (*session)(nil)
@@ -32,8 +32,8 @@ type session struct {
 	sess mongo.Session
 }
 
-func (s session) StartTransaction(options ...*options.TransactionOptions) error {
-	return s.sess.StartTransaction(options...)
+func (s session) StartTransaction(opts ...*options.TransactionOptions) error {
+	return s.sess.StartTransaction(opts...)
 }
 
 func (s session) AbortTransaction(ctx context.Context) error {
@@ -45,7 +45,7 @@ func (s session) CommitTransaction(ctx context.Context) error {
 }
 
 func (s session) WithTransaction(ctx context.Context, fn func(sessCtx mongo.SessionContext) (interface{}, error), opts ...*options.TransactionOptions) (interface{}, error) {
-	return s.sess.WithTransaction(ctx, fn)
+	return s.sess.WithTransaction(ctx, fn, opts...)
 }
 
 func (s session) ClusterTime() bson.Raw {
